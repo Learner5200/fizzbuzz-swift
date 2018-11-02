@@ -10,25 +10,53 @@ import XCTest
 @testable import FizzBuzz
 
 class FizzBuzzTests: XCTestCase {
+    
+    var fizzbuzz = FizzBuzz()
 
     override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
     }
 
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
-
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    
+    func testIsDivisibleByThree() {
+        let result = fizzbuzz.isDivisibleBy(number: 3, factor: 3)
+        XCTAssertTrue(result)
     }
-
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    
+    func testIsNotDivisibleByThree() {
+        let result = fizzbuzz.isDivisibleBy(number: 1, factor: 3)
+        XCTAssertFalse(result)
+    }
+    
+    func testIsDivisibleByFive() {
+        let result = fizzbuzz.isDivisibleBy(number: 10, factor: 5)
+        XCTAssertTrue(result)
+    }
+    
+    func testFizzesFor6() {
+        let result = fizzbuzz.parse(number: 6)
+        XCTAssertEqual(result, "fizz")
+    }
+    
+    func testIsNotDivisibleByFive() {
+        let result = fizzbuzz.isDivisibleBy(number: 9, factor: 5)
+        XCTAssertFalse(result)
+    }
+    
+    func testBuzzesFor10() {
+        let result = fizzbuzz.parse(number: 10)
+        XCTAssertEqual(result, "buzz")
+    }
+    
+    func testFizzBuzzesFor30() {
+        let result = fizzbuzz.parse(number: 30)
+        XCTAssertEqual(result, "fizzbuzz")
+    }
+    
+    func testReturnsNumberForAnythingElse() {
+        let result = fizzbuzz.parse(number: 17)
+        XCTAssertEqual(result, "17")
     }
 
 }
